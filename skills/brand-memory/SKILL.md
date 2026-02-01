@@ -20,14 +20,35 @@ Persistent memory for marketing content creation. Tracks what works, what doesn'
 
 **How to add feedback:** Edit the patterns.md or feedback.md files, or say "add to memory: [feedback]" in conversation.
 
-## Memory Files
+## Memory Files (Two Locations)
 
+### Plugin Data (updated via git, shared with team)
 ```
-.claude/marketing/
+brands/base44/
+├── tone-of-voice.md    # Brand guidelines (plugin update overwrites)
+├── learning-log.md     # MASTER learning log (team contributions via git)
+└── templates/          # Channel templates
+```
+
+### User Data (local, NEVER overwritten by updates)
+```
+~/.claude/marketing/
 ├── activeContext.md    # Current campaign/focus
-├── patterns.md         # Learned patterns (what works)
-└── feedback.md         # Pending feedback to process
+├── patterns.md         # Session patterns
+├── feedback.md         # Pending feedback
+└── local-learnings.md  # User's local additions
 ```
+
+## Update Behavior
+
+| On `/plugin update` | What Happens |
+|---------------------|--------------|
+| `skills/*` | Overwritten with latest |
+| `agents/*` | Overwritten with latest |
+| `brands/base44/learning-log.md` | Overwritten (team version from git) |
+| `~/.claude/marketing/*` | **PRESERVED** (user's local data) |
+
+**To contribute learnings back to team:** Edit `learning-log.md` in git repo and push
 
 ## File Templates
 

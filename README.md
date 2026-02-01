@@ -109,8 +109,29 @@ Team members can add feedback:
 ```bash
 # Update to latest version
 /plugin update base44-marketing
+```
 
-# User memory is preserved - only core skills updated
+### What Gets Updated vs Preserved
+
+| Component | On Update | Location |
+|-----------|-----------|----------|
+| Skills | **Overwritten** | `skills/` |
+| Agents | **Overwritten** | `agents/` |
+| Brand guidelines | **Overwritten** | `brands/base44/` |
+| Learning log (team) | **Overwritten** | `brands/base44/learning-log.md` |
+| User session data | **Preserved** | `~/.claude/marketing/` |
+
+### Contributing Learnings Back
+
+1. **For yourself only:** Say "add to memory: [feedback]" → saves to `~/.claude/marketing/`
+2. **For the team:** Edit `learning-log.md` in repo → push → everyone gets it on next update
+
+```bash
+# Clone, edit, push
+git clone https://github.com/blutrich/base44-marketing
+# Edit brands/base44/learning-log.md
+git add . && git commit -m "Add: avoid arrows per Lora"
+git push
 ```
 
 ## Development
